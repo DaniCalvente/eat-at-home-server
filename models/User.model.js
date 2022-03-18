@@ -16,10 +16,8 @@ const userSchema = new Schema(
       type: String, 
       enum: [ ]
     },
-    address: {
-      street: String,
-      postCode: String
-    }
+    address: String,
+    postCode: String,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

@@ -9,16 +9,16 @@ const menuItemSchema = new Schema(
       Type: String,
       enum: ["China", "Americana", "Española", "Griega", "Tahilandesa", "Italiana", "Vietnamita", "India", "Peruana", "Turca", "Coreana", "Japonesa" ]
     },
-    Allergens: {
+    allergens: {
         type: String,
         enum: ["Trigo", "Espelta", "Centeno", "Cebada", "Avena", "Gluten", "Almendras", "Avellanas", "Nueces", "Aceites", "Crustáceos", "Sopas", "Mahonesa", "Mousses", "Pastas", "Salsas", "Mejillones", "Queso", "Nata", "Yogures"]
     },
     ownerID: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
     },
     restaurantID: {
-      Type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Restaurant",
     },
   },
