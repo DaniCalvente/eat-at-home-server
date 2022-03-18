@@ -2,7 +2,6 @@ const router = require("express").Router();
 const RestaurantModel = require("../models/Restaurant.model")
 const MenuItemModel = require("../models/MenuItem.model")
 
-
 // aqui van todas nuestras rutas de restaurant
 
 router.get ("/:city", async (req, res, next) => {
