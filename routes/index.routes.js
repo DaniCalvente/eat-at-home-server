@@ -8,7 +8,11 @@ router.get("/", (req, res, next) => {
 // example: router.use("/auth", authRoutes)
 
 const restaurantRoutes = require("./restaurant.routes")
-router.use("/restaurants", restaurantRoutes)
+router.use("/restaurant", restaurantRoutes)
+const menuItemRoutes = require("./menuItem.routes")
+router.use("/menu-item", menuItemRoutes)
+
+
 
 
 module.exports = router;

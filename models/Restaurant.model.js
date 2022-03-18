@@ -9,19 +9,17 @@ const restaurantSchema = new Schema(
       },
       foodType: {
           type: String,
-          enum: [ ]
+          enum: ["China", "Americana", "Española", "Griega", "Tahilandesa", "Italiana", "Vietnamita", "India", "Peruana", "Turca", "Coreana", "Japonesa"]
       },
       city: {
         type: String, 
         enum: ["Atenas", "Madrid", "Berlín", "Viena", "Ámsterdam", "Praga", "Roma", "Budapest", "Londres","París", "Barcelona", "Milan", "Munich", "Liverpool", "Helsinki", "Copenhague", "Zurich", "Granada", "Sevilla"]
       },
-      address: {
-        street: String,
-        postCode: String
-      },
+      address: String,
+      postCode: String,
       restImg: String,
       ownerID: {
-        type:    mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User",
       },
     

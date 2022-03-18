@@ -14,12 +14,10 @@ const userSchema = new Schema(
     password: String,
     city: {
       type: String, 
-      enum: [ ]
+      enum: ["Atenas", "Madrid", "Berlín", "Viena", "Ámsterdam", "Praga", "Roma", "Budapest", "Londres","París", "Barcelona", "Milan", "Munich", "Liverpool", "Helsinki", "Copenhague", "Zurich", "Granada", "Sevilla"]
     },
-    address: {
-      street: String,
-      postCode: String
-    }
+    address: String,
+    postCode: String,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
