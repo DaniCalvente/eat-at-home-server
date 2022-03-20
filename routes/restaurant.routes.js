@@ -23,7 +23,7 @@ router.get ("/:city", async (req, res, next) => {
 router.get ("/:id/menu", async (req, res, next) => {
    const {restaurantID} = req.params
    try {
-      const response = await MenuItemModel.findById(restaurantID)
+      const response = await MenuItemModel.find(restaurantID)
       res.json(response)
 
    }catch(err) {
