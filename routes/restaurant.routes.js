@@ -6,10 +6,12 @@ const MenuItemModel = require("../models/MenuItem.model")
 
 router.get ("/:city", async (req, res, next) => {
    const {city} = req.params
+   console.log(city)
 
    try {
 
-    const response = await RestaurantModel.find({city})
+    const response = await RestaurantModel.find({ "city" : { $regex : new RegExp(city, "i") } })
+    console.log(response)
     res.json(response)
 
    } catch(err) {

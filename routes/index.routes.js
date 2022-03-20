@@ -9,6 +9,7 @@ router.get("/", (req, res, next) => {
 
 const restaurantRoutes = require("./restaurant.routes")
 router.use("/restaurant", restaurantRoutes)
+
 const menuItemRoutes = require("./menuItem.routes")
 router.use("/menu-item", menuItemRoutes)
 
