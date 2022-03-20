@@ -5,19 +5,44 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
-      unique: true 
+      unique: true,
     },
     email: {
       type: String,
-      unique: true
+      unique: true,
     },
     password: String,
     city: {
-      type: String, 
-      enum: ["Atenas", "Madrid", "Berlín", "Viena", "Ámsterdam", "Praga", "Roma", "Budapest", "Londres","París", "Barcelona", "Milan", "Munich", "Liverpool", "Helsinki", "Copenhague", "Zurich", "Granada", "Sevilla"]
+      type: String,
+      enum: [
+        "Atenas",
+        "Madrid",
+        "Berlín",
+        "Viena",
+        "Ámsterdam",
+        "Praga",
+        "Roma",
+        "Budapest",
+        "Londres",
+        "París",
+        "Barcelona",
+        "Milan",
+        "Munich",
+        "Liverpool",
+        "Helsinki",
+        "Copenhague",
+        "Zurich",
+        "Granada",
+        "Sevilla",
+      ],
     },
     address: String,
     postCode: String,
+    role: {
+      type: String,
+      enum: ["user", "owner"],
+      default: "user",
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
