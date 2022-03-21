@@ -11,7 +11,7 @@ router.get ("/:city", async (req, res, next) => {
    try {
 
     const response = await RestaurantModel.find({ "city" : { $regex : new RegExp(city, "i") } })
-    console.log(response)
+   //  console.log(response)
     res.json(response)
 
    } catch(err) {
@@ -21,10 +21,10 @@ router.get ("/:city", async (req, res, next) => {
 })
 
 router.get ("/menu/:id", async (req, res, next) => {
-   // /:id/menu
-   console.log("Estoy cogiendo el menu")
+
+   // console.log("Estoy cogiendo el menu")
    const {id} = req.params
-   console.log(req.body)
+   // console.log(req.body)
    
    try {
       const response = await MenuItemModel.find({"restaurantID": id})
