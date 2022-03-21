@@ -20,10 +20,14 @@ router.get ("/:city", async (req, res, next) => {
    }
 })
 
-router.get ("/:id/menu", async (req, res, next) => {
-   const {restaurantID} = req.params
+router.get ("/menu/:id", async (req, res, next) => {
+   // /:id/menu
+   console.log("Estoy cogiendo el menu")
+   const {id} = req.params
+   console.log(req.body)
+   
    try {
-      const response = await MenuItemModel.find(restaurantID)
+      const response = await MenuItemModel.find({"restaurantID": id})
       res.json(response)
 
    }catch(err) {

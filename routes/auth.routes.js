@@ -4,18 +4,18 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
-const isLoggedIn = require("../middleware/isLoggedIn");
+// const isLoggedIn = require("../middleware/isLoggedIn");
 
 // Signup
 
-router.post("signup", async (req, res, next) => {
+router.post("/signup", async (req, res, next) => {
   const { username, email, password, city, address, postCode } = req.body;
-
+  console.log("I got the variables")
   if (!username || !email || !password || !city || !address || !postCode) {
     res.status(400).json({ errorMessage: "Rellenar todos los campos" });
     return;
   }
-
+  console.log("None is empty")
   const passwordRegexp =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
 
@@ -26,16 +26,16 @@ router.post("signup", async (req, res, next) => {
     });
     return;
   }
-
+  console.log("password is correct")
   // Check email
 
   try {
-    const foundUser = await UserModel.findOne({ email });
+    const foundUser = await UserModel.findOne({ "email":email });
     if (foundUser) {
       res.status(400).json({ errorMessage: "Usuario ya existe" });
       return;
     }
-
+    console.log("email is not duplicated")
     // Aqui si todo lo anterior va bien, crearemos el usuario
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -47,8 +47,8 @@ router.post("signup", async (req, res, next) => {
       city,
       address,
       postCode,
-      role,
     });
+    console.log("user created")
 
     res.status(201).json();
   } catch (err) {
