@@ -5,14 +5,17 @@ const restaurantSchema = new Schema(
     {
       restName: {
         type: String,
-        unique: true 
+        unique: true,
+        require: true
       },
       foodType: {
           type: String,
+          require: true,
           enum: ["China", "Americana", "Española", "Griega", "Tahilandesa", "Italiana", "Vietnamita", "India", "Peruana", "Turca", "Coreana", "Japonesa"]
       },
       city: {
-        type: String, 
+        type: String,
+        require: true, 
         enum: ["Atenas", "Madrid", "Berlín", "Viena", "Ámsterdam", "Praga", "Roma", "Budapest", "Londres","París", "Barcelona", "Milan", "Munich", "Liverpool", "Helsinki", "Copenhague", "Zurich", "Granada", "Sevilla"]
       },
       address: String,
@@ -21,6 +24,7 @@ const restaurantSchema = new Schema(
       ownerID: {
         type: Schema.Types.ObjectId,
         ref: "User",
+        require: true,
       },
     
     },

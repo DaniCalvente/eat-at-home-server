@@ -39,12 +39,20 @@ router.get ("/menu/:id", isAuthenticated, async (req, res, next) => {
    }
 })
 
-router.post("/", isAuthenticated, async (req, res, next) => {
+router.post("/owner", isAuthenticated, async (req, res, next) => {
+
    const {restName, foodType, city, address, postCode } = req.body
 
    try{
-      const response = await RestaurantModel.create({restName, foodType, city, address, postCode})
-      res.json(response)
+      const response = await RestaurantModel.create({
+         restName, 
+         foodType, 
+         city, 
+         address, 
+         postCode, 
+         ownerID: req.payload._id
+      })
+      res.json("Restaurante Creado")
 
    }catch(err) {
       next(err)
