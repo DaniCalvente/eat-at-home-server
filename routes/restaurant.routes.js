@@ -59,6 +59,21 @@ router.post("/owner", isAuthenticated, async (req, res, next) => {
    }
 })
 
+router.get("/:owner-id", isAuthenticated, async (req, res, next) => {
+   const ownerID = req.payload._id
+
+   try{
+
+      const response = await RestaurantModel.find({"ownerID": ownerID})
+      // console.log(response);
+      res.json(response)
+
+   }catch(err) {
+      next(err)
+   }
+   
+})
+
 router.patch("/:id", isAuthenticated, async (req, res, next) => {
    const {id} = req.params
    const {restName, foodType, city, address, postCode} = req.body
