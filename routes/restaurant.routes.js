@@ -1,12 +1,15 @@
 const router = require("express").Router();
 const RestaurantModel = require("../models/Restaurant.model")
 const MenuItemModel = require("../models/MenuItem.model")
+const isAuthenticated = require("../middleware/isAuthenticated")
+
 
 // aqui van todas nuestras rutas de restaurant
 
 router.get ("/:city", async (req, res, next) => {
    const {city} = req.params
-   console.log(city)
+   // console.log(city)
+   
 
    try {
 
@@ -20,8 +23,8 @@ router.get ("/:city", async (req, res, next) => {
    }
 })
 
-router.get ("/menu/:id", async (req, res, next) => {
-
+router.get ("/menu/:id", isAuthenticated, async (req, res, next) => {
+   // console.log(req.payload);
    // console.log("Estoy cogiendo el menu")
    const {id} = req.params
    // console.log(req.body)
@@ -36,7 +39,7 @@ router.get ("/menu/:id", async (req, res, next) => {
    }
 })
 
-router.post("/", async (req, res, next) => {
+router.post("/", isAuthenticated, async (req, res, next) => {
    const {restName, foodType, city, address, postCode } = req.body
 
    try{
@@ -48,7 +51,7 @@ router.post("/", async (req, res, next) => {
    }
 })
 
-router.patch("/:id", async (req, res, next) => {
+router.patch("/:id", isAuthenticated, async (req, res, next) => {
    const {id} = req.params
    const {restName, foodType, city, address, postCode} = req.body
    try{
@@ -61,7 +64,7 @@ router.patch("/:id", async (req, res, next) => {
 
 })
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/:id", isAuthenticated, async (req, res, next) => {
    const {id} = req.params
    try {
       await RestaurantModel.findByIdAndDelete(id)
