@@ -15,8 +15,10 @@ router.get ("/menu/:id", isAuthenticated, async (req, res, next) => {
    // console.log(req.body)
    
    try {
-      const response = await MenuItemModel.find({"restaurantID": id})
-      res.json(response)
+      const menuItems = await MenuItemModel.find({"restaurantID": id})
+      const restaurant = await RestaurantModel.findById(id)
+      const isOwner = req.payload._id == restaurant.ownerID
+      res.json({menuItems, isOwner})
 
    }catch(err) {
       next(err)

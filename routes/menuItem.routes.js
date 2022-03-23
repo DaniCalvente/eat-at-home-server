@@ -4,7 +4,9 @@ const MenuItemModel = require("../models/MenuItem.model");
 
 
 // pasar el middleware como parametro para recibir el payload
-router.post("/:id", async (req, res, next) => {
+
+
+router.post("/menu/create/:id", async (req, res, next) => {
   const { id } = req.params;
   const { name, description, price, dishType, allergens } = req.body;
   
@@ -25,7 +27,7 @@ router.post("/:id", async (req, res, next) => {
   }
 });
 
-router.patch("/:id", async (req, res, next) => {
+router.patch("/menu/edit/:id", async (req, res, next) => {
   const { id } = req.params;
   const { name, description, price, dishType, allergens } = req.body;
   try {
@@ -42,7 +44,7 @@ router.patch("/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:id", async (req, res, next) => {
+router.delete("/menu/delete/:id", async (req, res, next) => {
     const {id} = req.params
     try {
        await MenuItemModel.findByIdAndDelete(id)
