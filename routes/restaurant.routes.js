@@ -59,13 +59,13 @@ router.post("/owner", isAuthenticated, async (req, res, next) => {
    }
 })
 
-router.get("/:owner-id", isAuthenticated, async (req, res, next) => {
-   const ownerID = req.payload._id
-
+router.get("/owner/:id", isAuthenticated, async (req, res, next) => {
+   //const ownerActiveID = req.payload._id
+   const {_id} = req.payload
    try{
 
-      const response = await RestaurantModel.find({"ownerID": ownerID})
-      // console.log(response);
+      const response = await RestaurantModel.find({ownerID: _id})
+      console.log(response);
       res.json(response)
 
    }catch(err) {
