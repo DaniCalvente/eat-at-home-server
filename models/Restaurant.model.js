@@ -11,12 +11,12 @@ const restaurantSchema = new Schema(
       foodType: {
           type: String,
           require: true,
-          enum: ["China", "Americana", "Española", "Griega", "Tahilandesa", "Italiana", "Vietnamita", "India", "Peruana", "Turca", "Coreana", "Japonesa"]
+          enum: ["Chinese", "American", "Spanish", "Greek", "Thai", "Italian", "Vietnamese", "Indian", "Peruvian", "Turkish", "Korean", "Japanese"]
       },
       city: {
         type: String,
         require: true, 
-        enum: ["Atenas", "Madrid", "Berlín", "Viena", "Ámsterdam", "Praga", "Roma", "Budapest", "Londres","París", "Barcelona", "Milan", "Munich", "Liverpool", "Helsinki", "Copenhague", "Zurich", "Granada", "Sevilla"]
+        enum: ["Athens", "Madrid", "Berlin", "Vienna", "Amsterdam", "Prague", "Rome", "Budapest", "London","Paris", "Barcelona", "Milan", "Munich ", "Liverpool", "Helsinki", "Copenhagen", "Zurich", "Granada", "Seville"]
       },
       address: String,
       postCode: String,

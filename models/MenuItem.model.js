@@ -7,11 +7,11 @@ const menuItemSchema = new Schema(
     price: Number,
     dishType: {
       Type: String,
-      enum: ["Entrantes", "Sopas", "Ensaladas", "Carnes", "Pescados", "Especialidades", "Vegetarianos", "Veganos", "Para Compartir", "Postres", "Bebidas"]
+      enum: ["Starters", "Soups", "Salads", "Meat", "Fish", "Specialties", "Vegetarian", "Vegan", "To Share", "Desserts", "Drinks"]
     },
     allergens: {
         type: String,
-        enum: ["Trigo", "Ninguno", "Espelta", "Centeno", "Cebada", "Avena", "Gluten", "Almendras", "Avellanas", "Nueces", "Aceites", "Crustáceos", "Sopas", "Mahonesa", "Mousses", "Pastas", "Salsas", "Mejillones", "Queso", "Nata", "Yogures"]
+        enum: ["Wheat", "None", "Spelt", "Rye", "Barley", "Oats", "Gluten", "Almonds", "Hazelnuts", "Walnuts", "Oils", "Crustaceans", "Soups ", "Mayonesa", "Mousses", "Pastas", "Sauces", "Mussels", "Cheese", "Cream", "Yogurts"]
     },
     ownerID: {
       type: Schema.Types.ObjectId,
