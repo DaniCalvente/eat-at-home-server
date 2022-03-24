@@ -26,6 +26,27 @@ router.get ("/menu/:id", isAuthenticated, async (req, res, next) => {
    }
 })
 
+router.post("/menu/:id", isAuthenticated, async (req, res, next) => {
+   const { id } = req.params;
+  
+   const { name, description, price, dishType, allergens } = req.body;
+ 
+   try {
+     await MenuItemModel.create( {
+       name,
+       description,
+       price,
+       dishType,
+       allergens,
+       restaurantID: id,
+       ownerID: req.payload._id 
+     });
+     res.json("Plato creado");
+   } catch (err) {
+     next(err);
+   }
+ });
+
 router.post("/owner", isAuthenticated, async (req, res, next) => {
 
    const {restName, foodType, city, address, postCode } = req.body

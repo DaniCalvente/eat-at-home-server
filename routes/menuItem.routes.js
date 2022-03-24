@@ -3,7 +3,7 @@ const RestaurantModel = require("../models/Restaurant.model");
 const MenuItemModel = require("../models/MenuItem.model");
 const isAuthenticated = require("../middleware/isAuthenticated");
 
-// pasar el middleware como parametro para recibir el payload
+
 
 router.get("/menu/:id", async (req, res, next) => {
   const { id } = req.params;
@@ -17,25 +17,26 @@ router.get("/menu/:id", async (req, res, next) => {
   }
 });
 
-router.post("/menu/create/:id", async (req, res, next) => {
-  const { id } = req.params;
-  const { name, description, price, dishType, allergens } = req.body;
+// router.post("/menu/:id", async (req, res, next) => {
+//   const { id } = req.params;
+ 
+//   const { name, description, price, dishType, allergens } = req.body;
 
-  try {
-    await MenuItemModel.create({
-      name,
-      description,
-      price,
-      dishType,
-      allergens,
-      restaurantID: id,
-      //   ownerID: req.payload._id // QUeda pendiente de uso con el FE
-    });
-    res.json("Plato creado");
-  } catch (err) {
-    next(err);
-  }
-});
+//   try {
+//     await MenuItemModel.create({
+//       name,
+//       description,
+//       price,
+//       dishType,
+//       allergens,
+//       restaurantID: id,
+//       ownerID: req.payload._id 
+//     });
+//     res.json("Plato creado");
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 router.patch("/menu/edit/:id", async (req, res, next) => {
   const { id } = req.params;
