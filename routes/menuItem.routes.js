@@ -1,15 +1,25 @@
 const router = require("express").Router();
 const RestaurantModel = require("../models/Restaurant.model");
 const MenuItemModel = require("../models/MenuItem.model");
-
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 // pasar el middleware como parametro para recibir el payload
 
+router.get("/menu/:id", async (req, res, next) => {
+  const { id } = req.params;
+  
+
+  try {
+    const response = await MenuItemModel.findById({ "_id": id});
+    res.json(response);
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post("/menu/create/:id", async (req, res, next) => {
   const { id } = req.params;
   const { name, description, price, dishType, allergens } = req.body;
-  
 
   try {
     await MenuItemModel.create({
@@ -19,9 +29,9 @@ router.post("/menu/create/:id", async (req, res, next) => {
       dishType,
       allergens,
       restaurantID: id,
-    //   ownerID: req.payload._id // QUeda pendiente de uso con el FE
+      //   ownerID: req.payload._id // QUeda pendiente de uso con el FE
     });
-    res.json("Plato creado")
+    res.json("Plato creado");
   } catch (err) {
     next(err);
   }
@@ -45,15 +55,13 @@ router.patch("/menu/edit/:id", async (req, res, next) => {
 });
 
 router.delete("/menu/delete/:id", async (req, res, next) => {
-    const {id} = req.params
-    try {
-       await MenuItemModel.findByIdAndDelete(id)
-       res.json("Plato Borrado")
-    }catch(err) {
-       next(err)
-    }
- })
-
-
+  const { id } = req.params;
+  try {
+    await MenuItemModel.findByIdAndDelete(id);
+    res.json("Plato Borrado");
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
