@@ -2,6 +2,7 @@ const router = require("express").Router();
 const UserModel = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 // Require necessary (isLoggedOut and isLoggedIn) middleware in order to control access to specific routes
 // const isLoggedIn = require("../middleware/isLoggedIn");
@@ -106,4 +107,14 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+router.get("/verify", isAuthenticated, (req, res, next) => {
+
+  // si el token no es valido o no tiene token, el middleware automaticamente envia un error
+
+  // la ruta solo se ejecuta si el usuario está logeado
+  res.status(200).json(req.payload)
+
+})
+
 module.exports = router;
