@@ -6,9 +6,10 @@ const menuItemSchema = new Schema(
     description: String,
     price: Number,
     dishType: {
-      Type: String,
+      type: String,
       enum: ["Starters", "Soups", "Salads", "Meat", "Fish", "Specialties", "Vegetarian", "Vegan", "To Share", "Desserts", "Drinks"]
     },
+    
     allergens: {
         type: String,
         enum: ["Wheat", "None", "Spelt", "Rye", "Barley", "Oats", "Gluten", "Almonds", "Hazelnuts", "Walnuts", "Oils", "Crustaceans", "Soups ", "Mayonesa", "Mousses", "Pastas", "Sauces", "Mussels", "Cheese", "Cream", "Yogurts"]
